@@ -1,0 +1,27 @@
+[
+  {
+    "id": "lead_1785589857395_fo51r2",
+    "companyName": "maycon douglas",
+    "segment": "E-commerce",
+    "location": "boa viagem",
+    "frequency": "2 a 3 vezes por semana",
+    "dailyVolume": "6–10",
+    "contactName": "maycon douglas",
+    "contactWhatsApp": "81989137099",
+    "contactEmail": "mayconddouglas23@gmail.com",
+    "createdAt": "2026-08-01T13:10:57.395Z",
+    "qualification": {
+      "level": "HIGH",
+      "levelLabel": "Cliente Recorrente (Alto Potencial)",
+      "score": 80,
+      "badgeColor": "bg-emerald-950 text-emerald-400 border-emerald-800",
+      "reasons": [
+        "Operação constante (2 a 3x por semana).",
+        "Volume moderado (6 a 10 entregas/dia).",
+        "Segmento de alta demanda logística (E-commerce)."
+      ],
+      "recommendedService": "Contrato Dedicado de Frota & Tabela Corporativa Preferencial",
+      "estimatedMonthlyDeliveries": "250 a 500 entregas/mês"
+    }
+  }
+]
