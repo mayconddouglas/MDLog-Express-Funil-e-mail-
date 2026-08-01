@@ -175,6 +175,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     let emailSent = false;
     let provider = "none";
+    let resendErrorDetails: any = null;
+    let smtpErrorDetails: any = null;
 
     // Try Resend
     if (resendApiKey) {
@@ -190,13 +192,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         });
 
         if (error) {
-          console.error("Resend send error:", error);
+          resendErrorDetails = error;
+          console.error("Resend send error:", JSON.stringify(error));
         } else {
           emailSent = true;
           provider = "resend";
           console.log("Email dispatched via Resend:", data?.id);
         }
-      } catch (err) {
+      } catch (err: any) {
+        resendErrorDetails = err?.message || err;
         console.error("Resend exception:", err);
       }
     }
@@ -220,20 +224,27 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
         emailSent = true;
         provider = "smtp";
-      } catch (err) {
+      } catch (err: any) {
+        smtpErrorDetails = err?.message || err;
         console.error("SMTP error:", err);
       }
     }
 
     if (!emailSent) {
-      // Nem Resend nem SMTP conseguiram entregar o e-mail. Como esta function
-      // não grava o lead em nenhum banco de dados, um "sucesso" falso aqui
-      // significa que o cliente vê a tela de confirmação e o lead se perde
-      // de vez, sem ninguém perceber. Por isso devolvemos erro real.
+      // Nem Resend nem SMTP conseguiram entregar o e-mail.
+      const debugMsg = resendErrorDetails?.message || (typeof resendErrorDetails === 'string' ? resendErrorDetails : null);
+      
       return res.status(502).json({
         success: false,
-        error:
-          "Não foi possível enviar sua solicitação por e-mail no momento. Tente novamente em instantes ou entre em contato pelo WhatsApp.",
+        error: debugMsg
+          ? `Erro no serviço de e-mail (Resend): ${debugMsg}`
+          : "Não foi possível enviar sua solicitação por e-mail no momento. Tente novamente em instantes ou entre em contato pelo WhatsApp.",
+        details: {
+          resendError: resendErrorDetails,
+          smtpError: smtpErrorDetails,
+          hasResendKey: !!resendApiKey,
+          destinationEmail: DESTINATION_EMAIL,
+        },
         lead: newLead,
       });
     }
