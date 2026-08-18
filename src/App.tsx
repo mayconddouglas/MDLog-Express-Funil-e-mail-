@@ -59,13 +59,15 @@ export default function App() {
       <ProgressBar currentStep={currentStep} totalSteps={totalSteps} />
 
       {/* Form Container */}
-      <main className="flex-1 flex flex-col justify-center overflow-y-auto px-4 no-scrollbar">
-        <SmartForm
-          currentStep={currentStep}
-          setCurrentStep={setCurrentStep}
-          totalSteps={totalSteps}
-          onLeadSubmitted={handleLeadSubmitted}
-        />
+      <main className="flex-1 flex flex-col overflow-y-auto px-4 no-scrollbar">
+        <div className="my-auto w-full">
+          <SmartForm
+            currentStep={currentStep}
+            setCurrentStep={setCurrentStep}
+            totalSteps={totalSteps}
+            onLeadSubmitted={handleLeadSubmitted}
+          />
+        </div>
       </main>
 
       {/* Minimalist Footer */}
