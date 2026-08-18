@@ -259,15 +259,6 @@ export const SmartForm: React.FC<SmartFormProps> = ({
               <p className="text-neutral-400 text-sm sm:text-base max-w-lg mx-auto font-normal mb-8 leading-relaxed">
                 Tenha um motoboy exclusivo da MDLog Express na porta da sua loja. Entregas imediatas, valor fixo e o padrão de qualidade que a sua marca exige.
               </p>
-              
-              <button
-                onClick={() => setCurrentStep(1)}
-                type="button"
-                className="group py-3.5 sm:py-3 px-8 w-full sm:w-auto text-sm font-semibold rounded-[5px] bg-white text-black hover:bg-[#EAEAEA] transition-all flex items-center justify-center space-x-2 shadow-lg cursor-pointer mb-12"
-              >
-                <span>Fazer orçamento em 2 minutos</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
 
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 flex flex-col items-center justify-center bg-black px-4">
                 <span className="text-[10px] text-neutral-500 mb-1 uppercase tracking-widest bg-black px-2">A Evolução</span>
