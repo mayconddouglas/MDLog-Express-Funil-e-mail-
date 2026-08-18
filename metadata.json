@@ -1,0 +1,6 @@
+{
+  "name": "MDLogExpress - Formulário Inteligente",
+  "description": "Formulário premium e minimalista de qualificação de leads para MDLogExpress.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
