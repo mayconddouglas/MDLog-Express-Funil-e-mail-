@@ -245,29 +245,7 @@ export const SmartForm: React.FC<SmartFormProps> = ({
             transition={{ duration: 0.3 }}
             className="flex flex-col w-full px-1"
           >
-            {/* Section 1: Hero Impact */}
-            <div className="min-h-[60vh] sm:min-h-[50vh] flex flex-col items-center justify-center text-center py-8 sm:py-12 relative border-b border-neutral-900/50 mb-10 sm:mb-14">
-              <div className="inline-flex items-center space-x-2 bg-neutral-900 border border-neutral-800 rounded-full px-3 py-1 mb-6">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span className="text-[10px] sm:text-xs font-mono font-medium text-neutral-300 tracking-wide uppercase">Sua Logística Profissional</span>
-              </div>
-              
-              <h1 className="font-headline font-bold text-2xl sm:text-4xl text-white tracking-tight leading-tight mb-4 sm:mb-6 max-w-xl mx-auto">
-                Chega de depender da sorte com Uber, 99 e inDrive Entregas.
-              </h1>
-              
-              <p className="text-neutral-400 text-sm sm:text-base max-w-lg mx-auto font-normal mb-8 leading-relaxed">
-                Tenha um motoboy exclusivo da MDLog Express na porta da sua loja. Entregas imediatas, valor fixo e o padrão de qualidade que a sua marca exige.
-              </p>
-
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 flex flex-col items-center justify-center bg-black px-4">
-                <span className="text-[10px] text-neutral-500 mb-1 uppercase tracking-widest bg-black px-2">A Evolução</span>
-                <ChevronDown className="w-4 h-4 text-neutral-600 animate-bounce" />
-              </div>
-            </div>
-
-            {/* Section 2: Comparison */}
-            <div className="flex flex-col items-center w-full pb-8 sm:pb-12">
+            <div className="flex flex-col items-center w-full py-4 sm:py-8">
               <div className="text-center mb-8">
                 <h2 className="font-headline font-bold text-xl sm:text-2xl text-white tracking-tight mb-2">
                   Por que mudar para a MDLog Express?
