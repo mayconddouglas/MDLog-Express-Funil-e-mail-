@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { RadioOption } from './RadioOption';
 import { FormState, LeadData } from '../types';
-import { ArrowRight, CheckCircle2, Loader2, Sparkles, Building, MapPin, Phone, Mail, User, Truck, ShieldCheck, FileText, XCircle, Clock, Zap, ChevronDown } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Loader2, Sparkles, Building, MapPin, Phone, Mail, User, Truck, ShieldCheck, FileText, XCircle, Clock, Zap, ChevronDown, Star } from 'lucide-react';
 
 interface SmartFormProps {
   currentStep: number;
@@ -310,6 +310,17 @@ export const SmartForm: React.FC<SmartFormProps> = ({
                     </li>
                   </ul>
                 </div>
+              </div>
+
+              <div className="flex flex-col items-center mb-6">
+                <div className="flex space-x-1 mb-2">
+                  {[1, 2, 3, 4, 5].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 text-yellow-500 fill-yellow-500" />
+                  ))}
+                </div>
+                <span className="text-xs sm:text-sm text-neutral-400 font-medium">
+                  Junte-se a dezenas de lojistas locais que já pararam de perder vendas.
+                </span>
               </div>
 
               <button
