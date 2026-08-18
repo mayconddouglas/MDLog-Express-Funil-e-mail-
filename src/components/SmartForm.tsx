@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { RadioOption } from './RadioOption';
 import { FormState, LeadData } from '../types';
-import { ArrowRight, CheckCircle2, Loader2, Sparkles, Building, MapPin, Phone, Mail, User, Truck, ShieldCheck, FileText, XCircle, Clock, Zap } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Loader2, Sparkles, Building, MapPin, Phone, Mail, User, Truck, ShieldCheck, FileText, XCircle, Clock, Zap, ChevronDown } from 'lucide-react';
 
 interface SmartFormProps {
   currentStep: number;
@@ -243,82 +243,115 @@ export const SmartForm: React.FC<SmartFormProps> = ({
             animate="animate"
             exit="exit"
             transition={{ duration: 0.3 }}
-            className="flex flex-col items-center py-2 sm:py-6 w-full max-h-full overflow-y-auto px-1"
+            className="flex flex-col w-full px-1"
           >
-            <div className="mb-5 sm:mb-6 text-center">
-              <h1 className="font-headline font-bold text-xl sm:text-2xl text-white tracking-tight mb-2">
-                Pare de perder vendas por atrasos.
+            {/* Section 1: Hero Impact */}
+            <div className="min-h-[60vh] sm:min-h-[50vh] flex flex-col items-center justify-center text-center py-8 sm:py-12 relative border-b border-neutral-900/50 mb-10 sm:mb-14">
+              <div className="inline-flex items-center space-x-2 bg-neutral-900 border border-neutral-800 rounded-full px-3 py-1 mb-6">
+                <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                <span className="text-[10px] sm:text-xs font-mono font-medium text-neutral-300 tracking-wide uppercase">O Gargalo do seu Negócio</span>
+              </div>
+              
+              <h1 className="font-headline font-bold text-2xl sm:text-4xl text-white tracking-tight leading-tight mb-4 sm:mb-6 max-w-xl mx-auto">
+                Quantos clientes você já perdeu hoje por causa de entregas atrasadas?
               </h1>
-              <p className="text-neutral-400 text-xs sm:text-sm max-w-lg mx-auto font-normal">
-                Veja por que ter um motoboy exclusivo da MDLog Express é muito mais vantajoso que depender de aplicativos comuns de entrega.
+              
+              <p className="text-neutral-400 text-sm sm:text-base max-w-lg mx-auto font-normal mb-8 leading-relaxed">
+                Depender de aplicativos comuns é brincar de roleta russa com a sua marca. O entregador cancela, o produto esfria, e quem leva a culpa é você.
               </p>
-            </div>
+              
+              <button
+                onClick={() => setCurrentStep(1)}
+                type="button"
+                className="group py-3.5 sm:py-3 px-8 w-full sm:w-auto text-sm font-semibold rounded-[5px] bg-white text-black hover:bg-[#EAEAEA] transition-all flex items-center justify-center space-x-2 shadow-lg cursor-pointer mb-12"
+              >
+                <span>Fazer orçamento em 2 minutos</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full mb-6">
-              {/* Apps */}
-              <div className="bg-neutral-900/50 border border-neutral-800 rounded-[8px] p-4 flex flex-col">
-                <div className="flex items-center space-x-2 mb-3">
-                  <Clock className="w-4 h-4 text-neutral-500" />
-                  <span className="text-sm font-semibold text-neutral-300">Apps Comuns (Uber/99)</span>
-                </div>
-                <ul className="space-y-2.5 text-xs text-neutral-400 flex-1">
-                  <li className="flex items-start space-x-2">
-                    <XCircle className="w-3.5 h-3.5 text-red-500/80 mt-0.5 shrink-0" />
-                    <span>Demora imprevisível para aceitarem a corrida</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <XCircle className="w-3.5 h-3.5 text-red-500/80 mt-0.5 shrink-0" />
-                    <span>Cancelamentos frequentes de motoristas</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <XCircle className="w-3.5 h-3.5 text-red-500/80 mt-0.5 shrink-0" />
-                    <span>Preços dinâmicos (alta em horários de pico)</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <XCircle className="w-3.5 h-3.5 text-red-500/80 mt-0.5 shrink-0" />
-                    <span>Entregador não tem compromisso com a sua marca</span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* MDLog Express */}
-              <div className="bg-emerald-950/20 border border-emerald-900/50 rounded-[8px] p-4 flex flex-col relative overflow-hidden">
-                <div className="absolute top-0 right-0 bg-emerald-500/10 px-2 py-1 rounded-bl-[8px] border-b border-l border-emerald-500/20">
-                   <span className="text-[10px] font-mono font-bold text-emerald-400">EXCLUSIVO</span>
-                </div>
-                <div className="flex items-center space-x-2 mb-3">
-                  <Zap className="w-4 h-4 text-emerald-400" />
-                  <span className="text-sm font-semibold text-white">MDLog Express</span>
-                </div>
-                <ul className="space-y-2.5 text-xs text-neutral-300 flex-1">
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 mt-0.5 shrink-0" />
-                    <span>Motoboy dedicado na porta da sua loja</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 mt-0.5 shrink-0" />
-                    <span>Despacho imediato, sem filas de espera</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 mt-0.5 shrink-0" />
-                    <span>Valores fixos sem surpresas no fim do mês</span>
-                  </li>
-                  <li className="flex items-start space-x-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 mt-0.5 shrink-0" />
-                    <span>Especializados no manuseio do seu produto</span>
-                  </li>
-                </ul>
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 flex flex-col items-center justify-center bg-black px-4">
+                <span className="text-[10px] text-neutral-500 mb-1 uppercase tracking-widest bg-black px-2">A Solução</span>
+                <ChevronDown className="w-4 h-4 text-neutral-600 animate-bounce" />
               </div>
             </div>
 
-            <button
-              onClick={() => setCurrentStep(1)}
-              type="button"
-              className="group py-3 sm:py-2.5 px-6 w-full sm:w-auto text-xs sm:text-sm font-semibold rounded-[5px] bg-white text-black hover:bg-[#EAEAEA] transition-all flex items-center justify-center space-x-2 shadow-lg cursor-pointer"
-            >
-              <span>Fazer orçamento em 2 minutos</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-            </button>
+            {/* Section 2: Comparison */}
+            <div className="flex flex-col items-center w-full pb-8 sm:pb-12">
+              <div className="text-center mb-8">
+                <h2 className="font-headline font-bold text-xl sm:text-2xl text-white tracking-tight mb-2">
+                  A diferença entre a sorte e o profissionalismo
+                </h2>
+                <p className="text-neutral-400 text-xs sm:text-sm max-w-md mx-auto">
+                  Veja por que ter um motoboy exclusivo da MDLog Express é muito mais vantajoso.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 w-full mb-8">
+                {/* Apps */}
+                <div className="bg-neutral-900/50 border border-neutral-800 rounded-[8px] p-5 flex flex-col">
+                  <div className="flex items-center space-x-2 mb-4">
+                    <Clock className="w-4 h-4 text-neutral-500" />
+                    <span className="text-sm font-semibold text-neutral-300">Apps Comuns (Uber/99)</span>
+                  </div>
+                  <ul className="space-y-3 text-xs sm:text-sm text-neutral-400 flex-1">
+                    <li className="flex items-start space-x-2">
+                      <XCircle className="w-4 h-4 text-red-500/80 mt-0.5 shrink-0" />
+                      <span>Demora imprevisível para aceitarem a corrida</span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <XCircle className="w-4 h-4 text-red-500/80 mt-0.5 shrink-0" />
+                      <span>Cancelamentos frequentes de motoristas</span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <XCircle className="w-4 h-4 text-red-500/80 mt-0.5 shrink-0" />
+                      <span>Preços dinâmicos (alta em horários de pico)</span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <XCircle className="w-4 h-4 text-red-500/80 mt-0.5 shrink-0" />
+                      <span>Entregador não tem compromisso com a sua marca</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* MDLog Express */}
+                <div className="bg-emerald-950/20 border border-emerald-900/50 rounded-[8px] p-5 flex flex-col relative overflow-hidden">
+                  <div className="absolute top-0 right-0 bg-emerald-500/10 px-2 py-1 rounded-bl-[8px] border-b border-l border-emerald-500/20">
+                     <span className="text-[10px] font-mono font-bold text-emerald-400">EXCLUSIVO</span>
+                  </div>
+                  <div className="flex items-center space-x-2 mb-4">
+                    <Zap className="w-4 h-4 text-emerald-400" />
+                    <span className="text-sm font-semibold text-white">MDLog Express</span>
+                  </div>
+                  <ul className="space-y-3 text-xs sm:text-sm text-neutral-300 flex-1">
+                    <li className="flex items-start space-x-2">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" />
+                      <span>Motoboy dedicado na porta da sua loja</span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" />
+                      <span>Despacho imediato, sem filas de espera</span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" />
+                      <span>Valores fixos sem surpresas no fim do mês</span>
+                    </li>
+                    <li className="flex items-start space-x-2">
+                      <CheckCircle2 className="w-4 h-4 text-emerald-500 mt-0.5 shrink-0" />
+                      <span>Especializados no manuseio do seu produto</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <button
+                onClick={() => setCurrentStep(1)}
+                type="button"
+                className="group py-3 sm:py-2.5 px-6 w-full sm:w-auto text-xs sm:text-sm font-semibold rounded-[5px] bg-white text-black hover:bg-[#EAEAEA] transition-all flex items-center justify-center space-x-2 shadow-lg cursor-pointer"
+              >
+                <span>Quero parar de perder vendas</span>
+                <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
           </motion.div>
         )}
 
