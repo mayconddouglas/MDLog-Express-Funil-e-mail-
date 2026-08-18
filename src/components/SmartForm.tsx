@@ -319,7 +319,7 @@ export const SmartForm: React.FC<SmartFormProps> = ({
                   ))}
                 </div>
                 <span className="text-xs sm:text-sm text-neutral-400 font-medium">
-                  Junte-se a dezenas de lojistas locais que já pararam de perder vendas.
+                  Junte-se a dezenas de lojistas locais que já pararam de perder tempo com cancelamentos.
                 </span>
               </div>
 
@@ -328,7 +328,7 @@ export const SmartForm: React.FC<SmartFormProps> = ({
                 type="button"
                 className="group py-3 sm:py-2.5 px-6 w-full sm:w-auto text-xs sm:text-sm font-semibold rounded-[5px] bg-white text-black hover:bg-[#EAEAEA] transition-all flex items-center justify-center space-x-2 shadow-lg cursor-pointer"
               >
-                <span>Quero parar de perder vendas</span>
+                <span>Quero parar de perder tempo</span>
                 <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
