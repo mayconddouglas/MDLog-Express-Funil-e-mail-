@@ -187,6 +187,11 @@ export const SmartForm: React.FC<SmartFormProps> = ({
         setLastSubmittedLead(data.lead);
         onLeadSubmitted(data.lead);
         setCurrentStep(7); // Final screen
+
+        // Disparar evento de conversão do Google Ads
+        if (typeof (window as any).gtag_report_conversion === 'function') {
+          (window as any).gtag_report_conversion();
+        }
       } else {
         setErrors({ submit: data.error || 'Erro ao enviar a solicitação. Tente novamente.' });
       }

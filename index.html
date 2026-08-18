@@ -17,6 +17,23 @@
 
       gtag('config', 'AW-18397257694');
     </script>
+    <!-- Event snippet for Enviar formulário de lead conversion page -->
+    <script>
+      function gtag_report_conversion(url) {
+        var callback = function () {
+          if (typeof(url) != 'undefined') {
+            window.location = url;
+          }
+        };
+        gtag('event', 'conversion', {
+            'send_to': 'AW-18397257694/XybcCK2a4OMcEN6_v8RE',
+            'value': 1.0,
+            'currency': 'BRL',
+            'event_callback': callback
+        });
+        return false;
+      }
+    </script>
   </head>
   <body class="bg-black text-white font-sans h-full overflow-hidden selection:bg-white selection:text-black">
     <div id="root" class="h-full overflow-hidden"></div>
